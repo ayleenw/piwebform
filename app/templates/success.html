@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>{{ title }} - Smartes Brett</title>
+    </head>
+    <body>
+        <h1>Notiz wird gedruckt</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <p>
+            {% for message in messages %}
+            {{ message }}</br>
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% endwith %}
+
+        {{ notetext }}
+<p>
+    <form action="/index">
+    <input type="submit" value="Zurück zur Starseite" />
+    </form>
+</p>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>{{ title }} - Smartes Brett</title>
+    </head>
+    <body>
+        <h1>Willkommen {{ notetext }} !</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.note.label }}<br>
+            {{ form.note(rows='10',cols='40', maxlength=200) }}<br>
+            {% for error in form.note.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>
+            (Maximal 200 Zeichen)
+        </p>
+        <p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    </body>
+</html>
